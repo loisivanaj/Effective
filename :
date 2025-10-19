@@ -1,0 +1,25 @@
+template <class T>
+class tree {
+public:
+	T value;
+	tree<T> *lptr, *rptr;
+
+	tree(const T& val) : value(val), lptr(nullptr), rptr(nullptr) {}
+	~tree() { delete lptr; delete rptr; }
+};
+
+tree invert(tree& node)
+{
+	
+}
+
+int main()
+{
+	tree<int>* root = new tree<int>(10); // const T& binds to rvalue, extends rvalue lifetime
+	root->lptr = new tree<int>(5);
+	root->rptr = new tree<int>(15);
+	root->lptr->lptr = new tree<int>(2);
+	root->rptr->rptr = new tree<int>(7);
+
+	delete root;
+}
